@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+        <!--bootstrap source css  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <title>Quick quiz</title>
 </head>
@@ -16,12 +18,14 @@
     <!-- highscore page link and timer -->
     <div class="scores">
         <a href="highscore.html">View Highscores</a>
-        </div>
-    <div class="timer">Time: <span id="time">0</span>
-        </div>
+    </div>
+    <div class="timer">
+        Time:  <span id="time"></span>
+    </div>
         <!-- static welcome paragraph -->
     <div class="wrapper">
-        <div id="starting-paragraph" class="start">
+        
+        <div id="starting-paragraph" class="jumbotron start">
             <h1> Quick Coding Quiz</h1>
             <p>
                 Try to answer the following questions as fast as you can and get the highscore. Be quick but percise,
@@ -29,6 +33,7 @@
             </p>
             <button id="start">Start Quiz</button>
         </div>
+    </div>
         <!-- hidden question paragraphs to write to -->
         <div id="questions" class="hide">
             <h2 id="question-title"></h2>
@@ -36,7 +41,8 @@
              </div>
         </div>
         <!-- hidden scoring sceen  -->
-    <div id="scoring-screen" class="hide">
+        
+    <div id="scoring-screen" class=" jumbotron hide">
         <h2>Good Job :) !</h2>
         <p>Your ending score is <span id="end-score"></span>.
         </p>
@@ -44,13 +50,14 @@
         <button id="submit">Submit</button>
         </p>
     </div>
-
+</div>
+    <!-- low opacity feedback on answers under questions -->
     <div id="feedback" class="feedback hide"></div>
      </div>
 
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<!-- bootstrap source -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -58,7 +65,8 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+       <!-- javascript source -->
         <script src="script.js"></script>
 </body>
 
