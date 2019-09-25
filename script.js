@@ -74,7 +74,8 @@ function startTimer(duration, display) {
       
         for(let i = 0; i < choices.length; i ++){
     let choiceButton = $("<button>"+ choices[i] +"</button>");
-          $("#choices").append(choiceButton);
+          
+        $("#choices").append(choiceButton);
         }
         return;
           
