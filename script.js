@@ -13,27 +13,27 @@
 let questions = [
     {
         title: "_____ loop, one of the most common loops; is used to check for certain conditions and then repeatedly execute a block of code as long as those conditions are met.",
-        choices: ["Four", "For", "Loop D", "conditional"],
+        choice: [" Four", " For", " Loop D", " conditional"],
         answer: "For"
     },
     {
         title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        choice: [" quotes", " curly brackets", " parentheses", " square brackets"],
         answer: "parentheses"
     },
     {
         title: "An Array's index begins at what numerical value:",
-        choices: ["0", "-1", "1", "Where ever you want it to"],
+        choice: [" 0", " -1", " 1", " Where ever you want it to"],
         answer: "0"
     },
     {
         title: "This comparison a >= b eqates to: ",
-        choices: ["a is less then or equal to b", "a is greater then b", "a is greater then or equal to b", " a is angry eyebrows face b"],
+        choice: [" a is less then or equal to b", " a is greater then b", " a is greater then or equal to b", " a is angry eyebrows face b"],
         answer: "a is greater then or equal to b"
     },
     {
         title:" Javescript DOES NOT have____",
-        choices: ["functions","arrays", "objects", "coffee :'("],
+        choice: [" functions"," arrays", " objects", " coffee :'("],
         answer: "coffee :'("
     },
 ];
@@ -52,11 +52,33 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
-    // hide starting-paragraph
+    // hide starting-paragraph and start timer
     $("#start").on("click", function(){
         $(".start").addClass("d-none");
         let oneMinute = 60,
         display = document.querySelector('#time');
     startTimer(oneMinute, display); 
+        // for loop for the questions    
+    for(let i = 0; i < questions.length; i ++){
+    //    isolated the variables
+        let titles = questions[i].title;
+        let choices = questions[i].choice;
+        let answers = questions[i].answer;
+       
+       
+    //    show question title
+        $("#question-title").append(titles);
+        $("#questions").attr("class", "jumbotron");
+   
+    //  show choices and make buttons loop through for buttons
+      
+        for(let i = 0; i < choices.length; i ++){
+    let choiceButton = $("<button>"+ choices[i] +"</button>");
+          $("#choices").append(choiceButton);
+        }
+        return;
+          
+          
+    }
     
     })
