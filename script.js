@@ -62,7 +62,7 @@ function gameEnd(){
     clearInterval(gameTimer);
     $("#questions").attr("class", "hide")
     $("#scoring-screen").attr("class", "jumbotron");
-    $("#ending-score").append(gameTimer);
+    $("#end-score").append(display);
 }
 
 
