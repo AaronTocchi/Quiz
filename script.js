@@ -14,56 +14,79 @@ let questions = [
     {
         title: "_____ loop, one of the most common loops; is used to check for certain conditions and then repeatedly execute a block of code as long as those conditions are met.",
         choice: [" Four", " For", " Loop D", " conditional"],
-        answer: "For"
+        answer: 1
     },
     {
         title: "The condition in an if / else statement is enclosed within ____.",
         choice: [" quotes", " curly brackets", " parentheses", " square brackets"],
-        answer: "parentheses"
+        answer: 2
     },
     {
         title: "An Array's index begins at what numerical value:",
         choice: [" 0", " -1", " 1", " Where ever you want it to"],
-        answer: "0"
+        answer: 0
     },
     {
         title: "This comparison a >= b eqates to: ",
         choice: [" a is less then or equal to b", " a is greater then b", " a is greater then or equal to b", " a is angry eyebrows face b"],
-        answer: "a is greater then or equal to b"
+        answer: 2
     },
     {
         title:" Javescript DOES NOT have____",
         choice: [" functions"," arrays", " objects", " coffee :'("],
-        answer: "coffee :'("
+        answer: 3
     },
 ];
 
+let display = document.querySelector('#time');
+let oneMinute = 60;
+let currentIndex = 0; // keeps track of current question
+let questionLength;
+let gameTimer;
+
 // Start timer function
-function startTimer(duration, display) {
-    let timer = duration, seconds;
-    setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        display.textContent =":" + seconds;
-
-        if (--timer === 0) {
-            clearInterval(timer);
+function startTimer(oneMinute, display) {
+    gameTimer = setInterval(function () {
+        oneMinute--;
+        if (oneMinute === 0) {
+            clearInterval(gameTimer);
         }
+        display.textContent = oneMinute;
     }, 1000);
-}
+};
 
-    // hide starting-paragraph and start timer
-    $("#start").on("click", function(){
-        $(".start").addClass("d-none");
-        let oneMinute = 60,
-        display = document.querySelector('#time');
-    startTimer(oneMinute, display); 
-        // for loop for the questions    
-    for(let i = 0; i < questions.length; i ++){
-    //    isolated the variables
-        let titles = questions[i].title;
-        let choices = questions[i].choice;
-        let answers = questions[i].answer;
+
+     // function for on button click
+     $("#questions").on("click", '.button', function(){
+         console.log(this);
+         let answer = parseInt($(this).attr('data-value'));
+        console.log(answer);
+        // if correct answer, then diplay "Correct"
+        // increment currentIndex by 1
+        // then displayQuestion()
+
+        // if incorrect, display "Incorrect"
+        // subtract 10 from total time (oneMinute)
+        // incremember currentIndex by1
+        // displayQuestion()
+
+        // *** But include some condition that checks if currentIndex === questionsLength
+        // if yes, endGame
+
+        if (answer === questions[currentIndex].answer) {
+            ++currentIndex;
+           $("#question-title").empty();
+           $("#choices").empty();
+            displayQuestion();
+
+        }
+     });
+
+     function displayQuestion() {
+        
+        let titles = questions[currentIndex].title;
+        let choices = questions[currentIndex].choice; // array
+        let answers = questions[currentIndex].answer;
        
        
     //    show question title
@@ -72,14 +95,56 @@ function startTimer(duration, display) {
    
     //  show choices and make buttons loop through for buttons
       
-        for(let i = 0; i < choices.length; i ++){
-    let choiceButton = $("<button>"+ choices[i] +"</button>");
-          
-        $("#choices").append(choiceButton);
+        for (let i = 0; i < choices.length; i++){
+            let choiceButton = $("<button>" + choices[i] + "</button>");
+            choiceButton.addClass("button");
+            choiceButton.attr('data-value', i)
+            $("#choices").append(choiceButton);
         }
-        return;
-          
-          
-    }
-    
+     }
+
+    // hide starting-paragraph and start timer
+    $("#start").on("click", function(){
+        event.preventDefault();
+        $(".start").addClass("d-none");
+        display.textContent = oneMinute;
+        startTimer(oneMinute, display); 
+        displayQuestion();
     })
+        /// CHECKPOINT: CONFIRMED ///
+
+
+        /// OLD CODE ///
+        // for loop for the questions    
+    // for (currentIndex = 0; currentIndex < questions.length; currentIndex++){
+        
+    //    isolated the variables
+    //     let titles = questions[currentIndex].title;
+    //     let choices = questions[currentIndex].choice; // array
+    //     let answers = questions[currentIndex].answer;
+       
+       
+    // //    show question title
+    //     $("#question-title").append(titles);
+    //     $("#questions").attr("class", "jumbotron");
+   
+    // //  show choices and make buttons loop through for buttons
+      
+    //     for (let i = 0; i < choices.length; i++){
+    //         let choiceButton = $("<button>" + choices[i] + "</button>");
+    //         choiceButton.addClass("button");
+    //         choiceButton.attr('data-value', i)
+    //         $("#choices").append(choiceButton);
+    //     }
+
+        // return
+/// OLD CODE ///
+
+        //Choose answer based on event listner
+        //create function check answer
+        // 
+          
+          
+    
+    
+
