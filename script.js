@@ -78,6 +78,13 @@ function startTimer(oneMinute, display) {
            $("#question-title").empty();
            $("#choices").empty();
             displayQuestion();
+        }
+        else {
+              oneMinute-10000;
+            //  ++currentIndex;
+            //  $("#question-title").empty();
+            //  $("#choices").empty();
+            //   displayQuestion(); 
 
         }
      });
@@ -87,6 +94,8 @@ function startTimer(oneMinute, display) {
         let titles = questions[currentIndex].title;
         let choices = questions[currentIndex].choice; // array
         let answers = questions[currentIndex].answer;
+
+
        
        
     //    show question title
