@@ -54,6 +54,12 @@ function startTimer(oneMinute, display) {
         display.textContent = oneMinute;
     }, 1000);
 };
+function gameEnd(){
+    clearInterval(gameTimer);
+    $("#questions").attr("class", "hide")
+    $("#scoring-screen").attr("class", "jumbotron");
+    $("#ending-score").parseInt(gameTimer);
+}
 
 
      // function for on button click
@@ -78,9 +84,11 @@ function startTimer(oneMinute, display) {
            $("#question-title").empty();
            $("#choices").empty();
             displayQuestion();
+            gameEnd();
+            
         }
         else {
-              oneMinute-10000;
+              gameTimer-10000;
             //  ++currentIndex;
             //  $("#question-title").empty();
             //  $("#choices").empty();
