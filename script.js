@@ -44,6 +44,9 @@ let currentIndex = 0; // keeps track of current question
 let questionLength;
 let gameTimer;
 
+if (currentIndex === questionLength){
+    gameEnd();
+}
 // Start timer function
 function startTimer(oneMinute, display) {
     gameTimer = setInterval(function () {
@@ -54,11 +57,12 @@ function startTimer(oneMinute, display) {
         display.textContent = oneMinute;
     }, 1000);
 };
+// on game end stop timer, hide questions,  save score
 function gameEnd(){
     clearInterval(gameTimer);
     $("#questions").attr("class", "hide")
     $("#scoring-screen").attr("class", "jumbotron");
-    $("#ending-score").parseInt(gameTimer);
+    $("#ending-score").append(gameTimer);
 }
 
 
@@ -84,26 +88,31 @@ function gameEnd(){
            $("#question-title").empty();
            $("#choices").empty();
             displayQuestion();
+            console.log(currentIndex);
             gameEnd();
             
         }
-        else {
-              gameTimer-10000;
+        else if (answer !=questions[currentIndex].answer) {
+              oneMinute-10000;
             //  ++currentIndex;
             //  $("#question-title").empty();
             //  $("#choices").empty();
             //   displayQuestion(); 
 
         }
+        else if (currentIndex === questionLength) {
+            gameEnd();
+        }
+        
      });
 
      function displayQuestion() {
         
-        let titles = questions[currentIndex].title;
-        let choices = questions[currentIndex].choice; // array
-        let answers = questions[currentIndex].answer;
+         titles = questions[currentIndex].title;
+        choices = questions[currentIndex].choice; // array
+        
 
-
+        
        
        
     //    show question title
