@@ -58,7 +58,7 @@ function startTimer(oneMinute, display) {
 };
 //  save score
 function saveScore() {
-    localStorage.setItem("players", JSON.stringify(players));
+    localStorage.setItem("display", JSON.stringify(display));
 };
 // on game end stop timer, hide questions,  save score
 function gameEnd(){
@@ -140,6 +140,12 @@ function gameEnd(){
         startTimer(oneMinute, display); 
         displayQuestion();
         
+    })
+
+    $("#submit").on("click", function(){
+        window.location.href="highscore.html";
+        saveScore();
+
     })
         /// CHECKPOINT: CONFIRMED ///
 
