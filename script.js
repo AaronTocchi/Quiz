@@ -43,10 +43,9 @@ let oneMinute = 60;
 let currentIndex = 0; // keeps track of current question
 let questionLength;
 let gameTimer;
+let players; 
 
-if (currentIndex === questionLength){
-    gameEnd();
-}
+
 // Start timer function
 function startTimer(oneMinute, display) {
     gameTimer = setInterval(function () {
@@ -56,6 +55,10 @@ function startTimer(oneMinute, display) {
         }
         display.textContent = oneMinute;
     }, 1000);
+};
+//  save score
+function saveScore() {
+    localStorage.setItem("players", JSON.stringify(players));
 };
 // on game end stop timer, hide questions,  save score
 function gameEnd(){
@@ -89,21 +92,18 @@ function gameEnd(){
            $("#choices").empty();
             displayQuestion();
             console.log(currentIndex);
-            gameEnd();
+            
             
         }
         else if (answer !=questions[currentIndex].answer) {
-              oneMinute-10000;
+              gameTimer-=10000;
             //  ++currentIndex;
             //  $("#question-title").empty();
             //  $("#choices").empty();
             //   displayQuestion(); 
 
         }
-        else if (currentIndex === questionLength) {
-            gameEnd();
-        }
-        
+       
      });
 
      function displayQuestion() {
@@ -127,6 +127,9 @@ function gameEnd(){
             choiceButton.attr('data-value', i)
             $("#choices").append(choiceButton);
         }
+        if (currentIndex === 4) {
+            gameEnd();
+        }
      }
 
     // hide starting-paragraph and start timer
@@ -136,6 +139,7 @@ function gameEnd(){
         display.textContent = oneMinute;
         startTimer(oneMinute, display); 
         displayQuestion();
+        
     })
         /// CHECKPOINT: CONFIRMED ///
 
