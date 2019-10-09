@@ -111,7 +111,7 @@ $("#questions").on("click", '.button', function () {
 
     }
 
-    if (currentIndex === 4) {
+    if (currentIndex === 5) {
         gameEnd();
     }
 
